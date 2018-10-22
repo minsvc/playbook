@@ -1,0 +1,6 @@
+#hello world yml file
+- hosts: docker
+  remote_user: root
+  tasks:
+  - name: hello world
+    shell: /usr/bin/wall "hello world"
