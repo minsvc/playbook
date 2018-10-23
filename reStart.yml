@@ -1,0 +1,21 @@
+#hello world yml file
+- hosts: kafka
+  remote_user: root
+  tasks:
+  - name: stop kafka
+    shell: /opt/kafka_2.12-1.0.0/bin/kafka-server-stop.sh
+  - name: stop zooKeeper
+    shell: /opt/zookeeper-3.4.10/bin/zkServer.sh stop
+  - name: show shutdown status
+    shell: /usr/sbin/ss -tnl | grep '9092\|2181'
+  - name: clean zookeeper data
+    shell: /usr/bin/rm -rf /opt/data/version-2
+  - name: clean kafka data
+    shell: /usr/bin/rm -rf /home/kafka/data
+  - name: start zooKeeper
+    shell: /opt/zookeeper-3.4.10/bin/zkServer.sh start
+  - name: start kafka
+    shell: /usr/bin/nohup /opt/kafka_2.12-1.0.0/bin/kafka-server-start.sh /opt/kafka_2.12-1.0.0/config/server.properties &
+  - name: show start status
+    shell: /usr/sbin/ss -tnl | grep '9092\|2181'
+  

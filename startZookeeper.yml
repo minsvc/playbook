@@ -1,0 +1,6 @@
+#hello world yml file
+- hosts: kafka
+  remote_user: root
+  tasks:
+  - name: start zooKeeper
+    shell: /opt/zookeeper-3.4.10/bin/zkServer.sh start

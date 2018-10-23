@@ -1,0 +1,6 @@
+#hello world yml file
+- hosts: kafka
+  remote_user: root
+  tasks:
+  - name: stop kafka
+    shell: /opt/kafka_2.12-1.0.0/bin/kafka-server-stop.sh

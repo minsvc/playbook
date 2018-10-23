@@ -1,0 +1,6 @@
+#hello world yml file
+- hosts: kafka
+  remote_user: root
+  tasks:
+  - name: start kafka
+    shell: /usr/bin/nohup /opt/kafka_2.12-1.0.0/bin/kafka-server-start.sh /opt/kafka_2.12-1.0.0/config/server.properties &
